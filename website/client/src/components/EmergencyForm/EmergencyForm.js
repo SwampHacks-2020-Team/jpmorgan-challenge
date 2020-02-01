@@ -4,7 +4,7 @@ const SendEmail = require('./SendEmail.js');
 
 /* Using Tutorial: https://www.youtube.com/watch?v=4CeTFW4agRw by Brice Ayres*/
 
-const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+const phoneRegex = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/);
 
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
@@ -24,9 +24,9 @@ class App extends Component {
         super(props);
         this.state = {  firstName:  null,
                         lastName:   null,
-                        email:      null,
+                        phone:      null,
                         message:    null,
-                        formErrors: { firstName: "", lastName: "", email: "", message: "" },
+                        formErrors: { firstName: "", lastName: "", phone: "", message: "" },
                         success:    false
                      };
     }
@@ -37,7 +37,7 @@ class App extends Component {
         if (formValid(this.state)) {
             console.log('--Submitting--');
             SendEmail.sendEmail(this.state.firstName.concat(" ", this.state.lastName),
-                                this.state.email,
+                                this.state.phone,
                                 this.state.message
                                )
             this.setState({success: true});
@@ -59,8 +59,8 @@ class App extends Component {
             case "lastName":
                 formErrors.lastName = value.length < 3 ? "minimum 3 characaters required" : "";
             break;
-            case "email":
-                formErrors.email = emailRegex.test(value) ? "" : "invalid email address";
+            case "phone":
+                formErrors.phone = phoneRegex.test(value) ? "" : "invalid phone number";
             break;
             case "message":
                 formErrors.message = value.length < 10 ? "minimum 10 characaters required" : "";
@@ -75,7 +75,7 @@ class App extends Component {
         const { formErrors } = this.state;
         return (
             <div className="form-wrapper">
-                <h1>Request Help</h1>
+                <h1>Let Us Help You.</h1>
                 <form onSubmit={this.handleSubmit} noValidate>
 
                     <div className="firstName">
@@ -104,16 +104,16 @@ class App extends Component {
                         )}
                     </div>
 
-                    <div className="email">
-                        <label htmlFor="email">Your Email</label>
-                        <input className={formErrors.email.length > 0 ? "error" : null}
-                               placeholder="Your Email"
-                               type="email"
-                               name="email"
+                    <div className="phone">
+                        <label htmlFor="phone">Your Phone Number</label>
+                        <input className={formErrors.phone.length > 0 ? "error" : null}
+                               placeholder="(---) --- ---"
+                               type="phone"
+                               name="phone"
                                noValidate
                                onChange={this.handleChange}/>
-                        {formErrors.email.length > 0 && (
-                            <span className="errorMessage">{formErrors.email}</span>
+                        {formErrors.phone.length > 0 && (
+                            <span className="errorMessage">{formErrors.phone}</span>
                         )}
                     </div>
 
@@ -130,9 +130,9 @@ class App extends Component {
                         )}
                     </div>
 
-                    <div className="sendEmail">
+                    <div className="get-help">
                         <button type="submit" disabled={this.state.success}>
-                            { !this.state.success ? 'Send Email' : 'Submitted!'}
+                            { !this.state.success ? 'Get Help' : 'Submitted!'}
                         </button>
                     </div>
 

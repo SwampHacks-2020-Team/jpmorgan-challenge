@@ -1,6 +1,7 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css?family=Anton&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Cambay|PT+Serif&display=swap');
 
 /* CSS reset */
 * {
@@ -79,6 +80,14 @@
 
 .two-col-format-column {
     flex: 50%;
+}
+
+.flex-column-60 {
+    flex: 65%;
+}
+
+.flex-column-40 {
+    flex: 35%;
 }
 
 .three-col-format-column {

@@ -1,0 +1,23 @@
+.footer {
+    position: relative;
+    display: flex;
+    margin: 0;
+    background-color: #000000;
+    min-height: 20vh;
+    text-align: center;
+    overflow:auto;
+}
+
+.footer > p {
+    margin: auto;
+    text-align: center;
+    position: relative;
+    color: white;
+    font-size: 1rem;
+    padding: 5vh 10vw 5vh;
+}
+
+.footer > p > a {
+    color: #888888;
+    text-decoration: none;
+}

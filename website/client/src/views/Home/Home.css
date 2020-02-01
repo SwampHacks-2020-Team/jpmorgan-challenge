@@ -4,7 +4,9 @@ body {
 
 .App {
     text-align: center;
-    background: #6FC9E7;
+    background-color: white;
+    background-image: url("../../assets/wallpaper-homepage.jpeg");
+    min-height: 100vh;
 }
 
 .App-logo {
@@ -19,19 +21,42 @@ body {
     justify-content: left;
     font-size: calc(10px + 2vmin);
     color: white;
-}
-
-.App-header > img {
-    position: absolute;
-}
+} 
 
 .page-name {
+    position: relative;
+    width: 100%;
     color: white;
     font-size: 5em;
-    padding-top: 5vh;
+    padding: 5vh 5vw 15vh;
     font-family: 'Anton', sans-serif;
+    text-align: left;
+}
+
+.city-callout {
+    padding: 10vh 10vw;
+    color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 2em;
+    text-align: right;
+}
+
+.inspirational-quote {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Cambay', sans-serif;
+    font-size: 1.4em;
+    padding: 0 10vw 0 5vw;
+    text-align: left;
 }
 
 .App-link {
     color: #09d3ac;
+}
+
+.col-home-left {
+    display: flex;
+}
+
+.col-home-right {
+    display: flex;
 }
