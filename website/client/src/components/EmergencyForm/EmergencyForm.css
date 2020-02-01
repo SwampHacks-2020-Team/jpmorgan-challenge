@@ -109,7 +109,7 @@ input.error {
     padding-bottom: 15px;
 }
 
-.get-coordinates button {
+.coord-button {
     background-color: rgba(0, 0, 0, 0);
     color: #253A4B;
     border: 2px solid #253A4B;
@@ -122,9 +122,10 @@ input.error {
     margin-bottom: 0.25em;
 }
 
-.get-coordinates button:hover {
+.coord-button:hover {
     color: #aaa;
     border: 2px solid #888;
+    cursor: pointer;
 }
 
 .get-help {

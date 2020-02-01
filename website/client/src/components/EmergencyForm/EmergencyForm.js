@@ -20,6 +20,10 @@ const formValid = ({ formErrors, ...rest }) => {
     return valid;
 };
 
+const round = (float, places) => {
+    return Number(parseFloat(float).toFixed(places));
+};
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -34,6 +38,19 @@ class App extends Component {
                      };
     }
 
+    getCoordinates =  async () => {
+        await navigator.geolocation.getCurrentPosition(
+            (position) => this.setState({
+                latitude: round(position.coords.latitude, 6),
+                longitude: round(position.coords.longitude, 6)
+            }, () => {
+                console.log(this.state.latitude, this.state.longitude);
+                this.getLong();
+                this.getLat();
+            })
+        )
+    };
+
     handleSubmit = e => {
         e.preventDefault();
 
@@ -44,7 +61,7 @@ class App extends Component {
                             this.state.phone, 
                             this.longitude,
                             this.latitude,
-                            this.state.message)
+                            this.state.message);
             this.setState({success: true});
         }
         else {
@@ -59,7 +76,7 @@ class App extends Component {
 
         switch (name) {
             case "name":
-                formErrors.name = value.length < 3 ? "minimum 3 characaters required" : "";
+                formErrors.name = value.length < 3 ? "minimum 3 characters required" : "";
             break;
             case "partySize":
                 formErrors.partySize = partySizeRegex.test(value) ? "" : "not a valid number of people";
@@ -78,6 +95,14 @@ class App extends Component {
         }
         this.setState({ formErrors, [name]: value });
     };
+
+    getLong() {
+        return this.state.longitude;
+    }
+
+    getLat() {
+        return this.state.latitude;
+    }
 
     render() {
         const { formErrors } = this.state;
@@ -131,6 +156,7 @@ class App extends Component {
                                placeholder="0.000000"
                                type="longitude"
                                name="longitude"
+                               value={this.getLong()}
                                noValidate
                                onChange={this.handleChange}/>
                         {formErrors.longitude.length > 0 && (
@@ -144,6 +170,7 @@ class App extends Component {
                                placeholder="0.000000"
                                type="latitude"
                                name="latitude"
+                               value={this.getLat()}
                                noValidate
                                onChange={this.handleChange}/>
                         {formErrors.phone.length > 0 && (
@@ -152,9 +179,9 @@ class App extends Component {
                     </div>
 
                     <div className="get-coordinates">
-                        <button type="submit" disabled={this.state.success}>
-                            Get Coordinates 
-                        </button>
+                        <div className="coord-button" onClick={() => this.getCoordinates()}>
+                            Get My Coordinates!
+                        </div>
                     </div>
 
                     <div className="message">
