@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.getHelp= (name, numPeople, phone, longitude, latitude, message) => {
-    axios.post("/api/email", {
+    axios.post("/api/getHelp", {
         name: name,
         numPeople: numPeople,
         phone: phone,

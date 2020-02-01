@@ -3,18 +3,9 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    exampleRouter = require('../routes/examples.server.routes');
+    getHelpRouter = require('../routes/getHelp.server.routes');
 
 module.exports.init = () => {
-    /* 
-        connect to database
-        - reference README for db uri
-    */
-    mongoose.connect(process.env.DB_URI || require('./config').db.uri, {
-        useNewUrlParser: true
-    });
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
 
     // initialize app
     const app = express();
@@ -22,11 +13,12 @@ module.exports.init = () => {
     // enable request logging for development debugging
     app.use(morgan('dev'));
 
-    // body parsing middleware
+    // body parsing middleware; this will let us get the data from a POST
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
     // add a router
-    app.use('/api/example', exampleRouter);
+    app.use('/api/', getHelpRouter);
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files
