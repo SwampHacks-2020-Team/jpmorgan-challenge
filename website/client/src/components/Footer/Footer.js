@@ -7,7 +7,7 @@ class Footer extends React.Component {
         return(
           <div className="footer">
               <p>
-                  <a href="/Home">#JustFooterThings</a>
+                  All images by &nbsp;<a href="https://www.gaiavisual.com/tsunami-images/" target="_blank" rel="noopener noreferrer">Gaia Visual</a>.
               </p>
           </div>
         )
