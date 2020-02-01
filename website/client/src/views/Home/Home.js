@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EmergencyForm from './../../components/EmergencyForm/EmergencyForm';
 import Hurricane from '../../assets/hurricane.svg';
 import './Home.css';
 
-function Home() {
+const Home = () => {
+    const [coordinates, setCoordinates] = useState({
+        latitude: 0.0,
+        longitude: 0.0,
+    });
+
+    const getCoordinates =  async () => {
+        await navigator.geolocation.getCurrentPosition(
+            (position) => setCoordinates({
+                latitude: position.coords.latitude, longitude: position.coords.longitude
+            })
+        )
+    };
+
+    const handleClick = () => {
+        getCoordinates().then(() => console.log(coordinates));
+    };
+
     return (
         <div className="App">
             <div className="row" style={{height:"100vh"}}>
@@ -21,6 +38,6 @@ function Home() {
             </div>
         </div>
     );
-}
+};
 
 export default Home;
