@@ -29,6 +29,7 @@ h1 {
     color: #ffffff;
     font-family: 'Anton', sans-serif;
     padding: 1em;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 label {
@@ -61,16 +62,20 @@ input.error {
     display: relative;
 }
 
-.name {
+.name, 
+.longitude {
     margin-right: 1%;
 }
 
-.party-size {
+.party-size,
+.latitude {
     margin-left: 1%;
 }
 
 .name,
 .party-size,
+.longitude, 
+.latitude, 
 .phone,
 .message {
     display: flex;
@@ -80,7 +85,9 @@ input.error {
 }
 
 .name,
-.party-size {
+.party-size,
+.longitude, 
+.latitude {
     width: 49%;
 }
 
