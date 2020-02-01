@@ -14,6 +14,7 @@ class NavBar extends React.Component {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto ">
                             <Nav.Link href="/Home#GetHelp">Get Help</Nav.Link>
+                            <Nav.Link href="/RequestJob">Request Job</Nav.Link>
                             <Nav.Link href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USC00093621/detail">NOAA</Nav.Link>
                             <Nav.Link href="/AboutUs">About Us</Nav.Link>
                             <Nav.Link href="/AboutUs">Frequently Asked Questions</Nav.Link>
@@ -33,6 +34,7 @@ class NavBar extends React.Component {
                     <Navbar.Brand href="/Home">SWAMPHACKS</Navbar.Brand>
                     <Nav className="mr-auto ">
                         <Nav.Link href="/Home#GetHelp">Get Help</Nav.Link>
+                        <Nav.Link href="/RequestJob">Request Job</Nav.Link>
                         <Nav.Link href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USC00093621/detail">NOAA</Nav.Link>
                         <Nav.Link href="/AboutUs">About Us</Nav.Link>
                         <Nav.Link href="/FAQ">FAQ</Nav.Link>
