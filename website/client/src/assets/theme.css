@@ -86,6 +86,26 @@
     flex: 65%;
 }
 
+.flex-column-60 {
+    flex: 60%;
+}
+
+.flex-column-55 {
+    flex: 55%;
+}
+
+.flex-column-50 {
+    flex: 50%;
+}
+
+.flex-column-45 {
+    flex: 45%;
+}
+
+.flex-column-40 {
+    flex: 40%;
+}
+
 .flex-column-35 {
     flex: 35%;
 }
