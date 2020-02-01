@@ -26,7 +26,7 @@ body {
 .page-name {
     position: relative;
     width: 100%;
-    color: white;
+    color: rgba(255, 255, 255, 1);
     font-size: 5em;
     padding: 5vh 5vw 0vh;
     font-family: 'Anton', sans-serif;

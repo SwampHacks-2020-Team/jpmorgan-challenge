@@ -151,6 +151,12 @@ class App extends Component {
                         )}
                     </div>
 
+                    <div className="get-coordinates">
+                        <button type="submit" disabled={this.state.success}>
+                            Get Coordinates 
+                        </button>
+                    </div>
+
                     <div className="message">
                         <label htmlFor="message">Tell us how we can help.</label>
                         <textarea className={formErrors.message.length > 0 ? "error" : null}

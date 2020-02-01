@@ -73,14 +73,19 @@ input.error {
 }
 
 .name,
-.party-size,
-.longitude, 
-.latitude, 
+.party-size, 
 .phone,
 .message {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
+    text-align: left;
+}
+
+.longitude, 
+.latitude {
+    display: flex;
+    flex-direction: column;
     text-align: left;
 }
 
@@ -96,8 +101,34 @@ input.error {
     width: 100%;
 }
 
+.get-coordinates {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.get-coordinates button {
+    background-color: rgba(0, 0, 0, 0);
+    color: #253A4B;
+    border: 2px solid #253A4B;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+}
+
+.get-coordinates button:hover {
+    color: #aaa;
+    border: 2px solid #888;
+}
+
 .get-help {
-    padding-top: 5vh;
+    padding-top: 25px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -130,6 +161,7 @@ input.error {
   color: #666666;
 }
 
+.get-coordinates small, 
 .get-help small {
     color: #999;
     font-weight: lighter;
