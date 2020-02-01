@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./EmergencyForm.css";
-const SendEmail = require('./SendEmail.js');
+const GetHelp = require('./GetHelp.js');
 
 /* Using Tutorial: https://www.youtube.com/watch?v=4CeTFW4agRw by Brice Ayres*/
 
 const phoneRegex = RegExp(/^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/);
+const partySizeRegex = RegExp(/^[1-9][0-9]?$/);
 
 const formValid = ({ formErrors, ...rest }) => {
     let valid = true;
@@ -22,11 +23,11 @@ const formValid = ({ formErrors, ...rest }) => {
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {  firstName:  null,
-                        lastName:   null,
+        this.state = {  name:       null,
                         phone:      null,
+                        partySize:  null,
                         message:    null,
-                        formErrors: { firstName: "", lastName: "", phone: "", message: "" },
+                        formErrors: { name: "", partySize: "", phone: "", message: "" },
                         success:    false
                      };
     }
@@ -36,10 +37,10 @@ class App extends Component {
 
         if (formValid(this.state)) {
             console.log('--Submitting--');
-            SendEmail.sendEmail(this.state.firstName.concat(" ", this.state.lastName),
-                                this.state.phone,
-                                this.state.message
-                               )
+            GetHelp.getHelp(this.state.name,
+                            this.state.partySize,
+                            this.state.phone, 
+                            this.state.message)
             this.setState({success: true});
         }
         else {
@@ -53,11 +54,11 @@ class App extends Component {
         let formErrors = { ...this.state.formErrors };
 
         switch (name) {
-            case "firstName":
-                formErrors.firstName = value.length < 3 ? "minimum 3 characaters required" : "";
+            case "name":
+                formErrors.name = value.length < 3 ? "minimum 3 characaters required" : "";
             break;
-            case "lastName":
-                formErrors.lastName = value.length < 3 ? "minimum 3 characaters required" : "";
+            case "partySize":
+                formErrors.partySize = partySizeRegex.test(value) ? "not a valid number of people" : "";
             break;
             case "phone":
                 formErrors.phone = phoneRegex.test(value) ? "" : "invalid phone number";
@@ -78,29 +79,29 @@ class App extends Component {
                 <h1>Let Us Help You.</h1>
                 <form onSubmit={this.handleSubmit} noValidate>
 
-                    <div className="firstName">
-                        <label htmlFor="firstName">First Name</label>
-                        <input className={formErrors.firstName.length > 0 ? "error" : null}
-                               placeholder="First Name"
+                    <div className="name">
+                        <label htmlFor="name">Name</label>
+                        <input className={formErrors.name.length > 0 ? "error" : null}
+                               placeholder="Name"
                                type="text"
-                               name="firstName"
+                               name="name"
                                noValidate
                                onChange={this.handleChange}/>
-                        {formErrors.firstName.length > 0 && (
-                            <span className="errorMessage">{formErrors.firstName}</span>
+                        {formErrors.name.length > 0 && (
+                            <span className="errorMessage">{formErrors.name}</span>
                         )}
                     </div>
 
-                    <div className="lastName">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input className={formErrors.lastName.length > 0 ? "error" : null}
+                    <div className="party-size">
+                        <label htmlFor="partySize">Party Size</label>
+                        <input className={formErrors.partySize.length > 0 ? "error" : null}
                                placeholder="Last Name"
                                type="text"
-                               name="lastName"
+                               name="partySize"
                                noValidate
                                onChange={this.handleChange}/>
-                        {formErrors.lastName.length > 0 && (
-                            <span className="errorMessage">{formErrors.lastName}</span>
+                        {formErrors.partySize.length > 0 && (
+                            <span className="errorMessage">{formErrors.partySize}</span>
                         )}
                     </div>
 

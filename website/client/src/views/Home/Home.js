@@ -7,14 +7,15 @@ function Home() {
     return (
         <div className="App">
             <div className="row" style={{height:"100vh"}}>
-                <div className="flex-column-60 col-home-left">
+                <div className="flex-column-65 col-home-left">
                     <div className="homepage-content">
                         <header className="page-name">STRONGER TOGETHER.</header>
+                        <div className="page-name-description">Hurricane &nbsp;Relief</div>
                         <div className="inspirational-quote">"There are no problems we cannot solve together, but very few that we can solve by ourselves." - Lyndon B. Johnson</div>
                         <div className="city-callout">WE'RE HERE FOR YOU, <br/>GAINESVILLE.</div>
                     </div>
                 </div>
-                <div className="flex-column-40 col-home-right">
+                <div className="flex-column-35 col-home-right">
                      <EmergencyForm id="GetHelp"/>
                 </div>
             </div>

@@ -1,9 +1,10 @@
 const axios = require('axios');
 
-module.exports.sendEmail= (name, email, message) => {
+module.exports.getHelp= (name, numPeople, phone, message) => {
     axios.post("/api/email", {
         name: name,
-        email: email,
+        numPeople: numPeople,
+        phone: phone,
         message: message
     })
     .then(function (response) {

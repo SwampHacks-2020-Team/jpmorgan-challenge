@@ -61,16 +61,16 @@ input.error {
     display: relative;
 }
 
-.firstName {
+.name {
     margin-right: 1%;
 }
 
-.lastName {
+.party-size {
     margin-left: 1%;
 }
 
-.firstName,
-.lastName,
+.name,
+.party-size,
 .phone,
 .message {
     display: flex;
@@ -79,8 +79,8 @@ input.error {
     text-align: left;
 }
 
-.firstName,
-.lastName {
+.name,
+.party-size {
     width: 49%;
 }
 
