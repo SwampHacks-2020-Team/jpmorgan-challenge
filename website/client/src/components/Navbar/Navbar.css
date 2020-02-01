@@ -1,0 +1,18 @@
+.navbar-element {
+  float: none;
+  text-align: center;
+}
+
+.github-logo {
+  width: 35px;
+  height: 35px;
+}
+
+.github-logo-color {
+  fill: #ffffff;
+}
+
+
+.github-logo-color:hover {
+	cursor: pointer;
+}

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Switch, Redirect  } from 'react-router-dom';
 import Home from "./views/Home/Home";
-import NotFound from "./views/NotFound";
-import NavBar from "./components/Header/NavBar";
+import NotFound from "./views/NotFound/NotFound";
+import NavBar from "./components/Navbar/Navbar";
+import './assets/theme.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (

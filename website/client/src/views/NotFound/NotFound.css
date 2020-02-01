@@ -1,0 +1,25 @@
+.not-found-container {
+    height: 80vh;
+}
+
+#page404-code {
+    padding-top: 15vh;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 20vh;
+    background: -webkit-linear-gradient(left, #8689f0, #3bedb8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#page404-text {
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 5vh;
+}
+
+#page404-button {
+    margin-top: 20px;
+    text-align: center;
+}
