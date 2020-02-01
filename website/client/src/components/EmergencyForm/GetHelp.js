@@ -15,4 +15,4 @@ module.exports.getHelp= (name, numPeople, phone, longitude, latitude, message) =
     .catch(function (error) {
         console.log(error);
     });
-}
+};

@@ -17,9 +17,7 @@ const Home = () => {
         )
     };
 
-    const handleClick = () => {
-        getCoordinates().then(() => console.log(coordinates));
-    };
+    //getCoordinates().then(() => console.log(coordinates));
 
     return (
         <div className="App">
