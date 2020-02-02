@@ -25,7 +25,6 @@
     "morgan": "^1.9.1",
     "node.js": "0.0.0",
     "nodemon": "^1.19.4",
-    "parse-gpx": "^1.2.0",
     "should": "^13.2.3",
     "supertest": "^4.0.2"
   },

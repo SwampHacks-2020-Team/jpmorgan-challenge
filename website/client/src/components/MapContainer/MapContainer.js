@@ -3,13 +3,20 @@ import React from "react";
 import './MapContainer.css'
 
 const MapContainer = (props) => {
+    let markerList = props.geoData.map((point) => {
+        return (
+            <Marker lat={point.lat} lng={point.lon} />
+        );
+    });
+
     return (
         <div className="google-map">
             <GoogleMapReact
                 bootstrapURLKeys={{ key: props.googleKey }}
-                defaultZoom={16}
+                defaultZoom={15}
                 defaultCenter={{lat: 29.642, lng: -82.347}}
             >
+                {markerList}
                 <Marker lat={29.642} lng={-82.347} />
                 <Marker lat={29.643} lng={-82.346} />
                 <Route lat={29.641} lng={-82.348} />
