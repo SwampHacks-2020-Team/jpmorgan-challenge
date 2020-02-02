@@ -10,12 +10,12 @@ class AboutUs extends React.Component {
                   </div>
                   <div className="flex-column-60 col-about-right">
                       <div className="about-us-title">
-                          OBJECTIVE: s u r v i v e
+                          Real-Time Rescue
                       </div>
                       <div className="description">
                           <p>
                               Here, we have one objective: to help any person, in any place, at any time, affected by
-                              any flood-related disaster, survive. Our missions is, at the very least, to ensure that
+                              any flood-related disaster, survive. Our mission is, at the very least, to ensure that
                               all those stranded by flooding can survive and continue living their lives to the fullest.
                           </p>
                           <p>

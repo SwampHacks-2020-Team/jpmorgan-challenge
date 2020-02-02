@@ -11,6 +11,7 @@ const MapContainer = (props) => {
                 defaultCenter={{lat: 29.642, lng: -82.347}}
             >
                 <Marker lat={29.642} lng={-82.347} />
+                <Marker lat={29.643} lng={-82.346} />
             </GoogleMapReact>
         </div>
     )
