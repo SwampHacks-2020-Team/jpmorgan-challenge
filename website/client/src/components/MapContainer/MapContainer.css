@@ -1,12 +1,25 @@
-.pin {
+.survivor {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 18px;
-    height: 18px;
+    width: 1rem;
+    height: 1rem;
     background-color: #435ad2;
     border: 2px solid #ff7818;
     border-radius: 100%;
+    user-select: none;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.route {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    background-color: #d21a51;
+    border-radius: 40%;
     user-select: none;
     transform: translate(-50%, -50%);
     z-index: 1;
