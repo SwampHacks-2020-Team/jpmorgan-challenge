@@ -1,10 +1,10 @@
-.request-job-page {
+.volunteer-page {
 	background-color: teal;
 	min-height: 100vh;
 	padding-left: 2rem;
 }
 
-.request-job-title {
+.volunteer-title {
 	position: relative;
 	width: 100%;
 	color: rgba(0, 0, 0, 0.8);
@@ -40,4 +40,8 @@
 	background-color: #375a7a;
 	color: white;
 	border: 2px solid white;
+}
+
+.col-volunteer-left {
+		padding-left: 10vw;
 }

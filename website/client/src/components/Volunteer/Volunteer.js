@@ -1,9 +1,10 @@
 import React from 'react';
-import './RequestJob.css';
+import './Volunteer.css';
 import MapContainer from "../MapContainer/MapContainer";
+import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
 
-class RequestJob extends React.Component {
+class Volunteer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -45,14 +46,15 @@ class RequestJob extends React.Component {
 
     render() {
         return(
-          <div className="request-job-page">
-              <div className="about-us-title">
+          <div className="volunteer-page">
+              <div className="volunteer-title">
                   Request Job
               </div>
               <div className="row" style={{height:"100vh"}}>
-                  <div className="flex-column-40 col-about-left">
+                  <div className="flex-column-50 col-volunteer-left">
                       <div className="variable">
-                          <label>Boat Depth (meters)</label>
+                          <label>Draft (meters)</label>
+
                           <input
                               placeholder="0.0 m"
                               type="text"
@@ -61,9 +63,9 @@ class RequestJob extends React.Component {
                           />
                       </div>
                       <div className="variable">
-                          <label>Boat Max Capacity</label>
+                          <label>Max. Boat Capacity</label>
                           <input
-                              placeholder="0 people"
+                              placeholder="0-20"
                               type="text"
                               name="capacity"
                               onChange={this.handleChange}
@@ -72,7 +74,7 @@ class RequestJob extends React.Component {
                       <div className="variable">
                           <label>Boat Starting Latitude</label>
                           <input
-                              placeholder="0.0"
+                              placeholder="0.000000"
                               type="text"
                               name="latitude"
                               onChange={this.handleChange}
@@ -81,7 +83,7 @@ class RequestJob extends React.Component {
                       <div className="variable">
                           <label>Boat Starting Longitude</label>
                           <input
-                              placeholder="0.0"
+                              placeholder="0.000000"
                               type="text"
                               name="longitude"
                               onChange={this.handleChange}
@@ -91,7 +93,7 @@ class RequestJob extends React.Component {
                           Request Job
                       </div>
                   </div>
-                  <div className="flex-column-60 col-about-right">
+                  <div className="flex-column-50 col-volunteer-right">
                       {!this.state.keyIsLoading && this.state.googleKey.length > 1 ?
                           <MapContainer
                               googleKey={this.state.googleKey}
@@ -106,4 +108,4 @@ class RequestJob extends React.Component {
     }
 }
 
-export default RequestJob;
+export default Volunteer;

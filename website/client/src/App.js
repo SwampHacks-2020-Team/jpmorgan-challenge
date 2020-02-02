@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, Redirect  } from 'react-router-dom';
 import Home from "./views/Home/Home";
-import RequestJob from "./components/RequestJob/RequestJob"
+import Volunteer from "./components/Volunteer/Volunteer"
 import AboutUs from "./components/AboutUs/AboutUs"
 import FAQ from "./components/FAQ/FAQ"
 import RubberDucky from "./components/Render/Render"
@@ -20,7 +20,7 @@ const App = () => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
-        <Route exact path="/RequestJob" component={RequestJob}></Route>
+        <Route exact path="/Volunteer" component={Volunteer}></Route>
         <Route exact path="/AboutUs" component={AboutUs}></Route>
         <Route exact path="/FAQ" component={FAQ}></Route>
         <Route exact path="/Products/RubberDucky" component={RubberDucky}></Route>
