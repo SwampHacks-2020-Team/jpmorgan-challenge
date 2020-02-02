@@ -1,0 +1,11 @@
+misc/segments4
+misc/customprofiles
+target/
+*.BAK
+.classpath
+.project
+*.class
+*.iml
+
+.idea/*
+!/.idea/runConfigurations
