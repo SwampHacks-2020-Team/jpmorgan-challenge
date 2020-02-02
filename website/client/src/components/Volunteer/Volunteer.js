@@ -46,60 +46,59 @@ class Volunteer extends React.Component {
 
     render() {
         return(
-          <div className="volunteer-page">
-              <div className="volunteer-title">
-                  Request Job
-              </div>
+          <div className="volunteer-page parallax">
               <div className="row" style={{height:"100vh"}}>
-                  <div className="flex-column-50 col-volunteer-left">
-                      <div className="variable">
-                          <label>Draft (meters)</label>
+                  <div className="flex-column-40 col-volunteer-left">
+                      <div className="volunteer-title">
+                        Volunteer
+                      </div>
+                      <div className="volunteer-form">
+                          <div className="variable">
+                              <label>Draft (meters)</label>
 
-                          <input
-                              placeholder="0.0 m"
-                              type="text"
-                              name="depth"
-                              onChange={this.handleChange}
-                          />
-                      </div>
-                      <div className="variable">
-                          <label>Max. Boat Capacity</label>
-                          <input
-                              placeholder="0-20"
-                              type="text"
-                              name="capacity"
-                              onChange={this.handleChange}
-                          />
-                      </div>
-                      <div className="variable">
-                          <label>Boat Starting Latitude</label>
-                          <input
-                              placeholder="0.000000"
-                              type="text"
-                              name="latitude"
-                              onChange={this.handleChange}
-                          />
-                      </div>
-                      <div className="variable">
-                          <label>Boat Starting Longitude</label>
-                          <input
-                              placeholder="0.000000"
-                              type="text"
-                              name="longitude"
-                              onChange={this.handleChange}
-                          />
-                      </div>
-                      <div className="request" onClick={() => this.onSubmit}>
-                          Request Job
+                              <input
+                                  placeholder="0.0 m"
+                                  type="text"
+                                  name="depth"
+                                  onChange={this.handleChange}
+                              />
+                          </div>
+                          <div className="variable">
+                              <label>Max. Boat Capacity</label>
+                              <input
+                                  placeholder="0-20"
+                                  type="text"
+                                  name="capacity"
+                                  onChange={this.handleChange}
+                              />
+                          </div>
+                          <div className="variable">
+                              <label>Boat Starting Latitude</label>
+                              <input
+                                  placeholder="0.000000"
+                                  type="text"
+                                  name="latitude"
+                                  onChange={this.handleChange}
+                              />
+                          </div>
+                          <div className="variable">
+                              <label>Boat Starting Longitude</label>
+                              <input
+                                  placeholder="0.000000"
+                                  type="text"
+                                  name="longitude"
+                                  onChange={this.handleChange}
+                              />
+                          </div>
+                          <div className="request" onClick={() => this.onSubmit}>
+                              Request Job
+                          </div>
                       </div>
                   </div>
-                  <div className="flex-column-50 col-volunteer-right">
-                      {!this.state.keyIsLoading && this.state.googleKey.length > 1 ?
-                          <MapContainer
-                              googleKey={this.state.googleKey}
-                          />
-                          :
-                          null
+                  <div className="flex-column-60 col-volunteer-right">
+                      {
+                        !this.state.keyIsLoading && this.state.googleKey.length > 1 ?
+                        <MapContainer googleKey={this.state.googleKey} id="google-map"/> : null
                       }
                   </div>
               </div>
