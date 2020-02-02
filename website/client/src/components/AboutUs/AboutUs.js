@@ -10,7 +10,7 @@ class AboutUs extends React.Component {
                   </div>
                   <div className="flex-column-60 col-about-right">
                       <div className="about-us-title">
-                          OBJECTIVE: s u r v i v e
+                          Real-Time Rescue
                       </div>
                       <div className="description">
                           <p>
