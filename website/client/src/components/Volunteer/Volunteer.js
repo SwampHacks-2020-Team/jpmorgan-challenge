@@ -47,7 +47,7 @@ class Volunteer extends React.Component {
             .then((res) => {
                 console.log(res.data);
                 this.setState({
-                    gpxData: res.data.track
+                    gpxData: res.data.tracks[0].segments[0]
                 }, () => {
                     this.setState({
                         dataIsLoading: false
