@@ -64,13 +64,14 @@ class FAQ extends React.Component {
                     </div>
                     <div className="accordion-item" id="question4">
                         <a className="accordion-link" href="#question4">
-                            <span>Question 4?</span>
+                            <span>What's up with the rubber duck?</span>
                             <i className="icon ion-md-add"/>
                             <i className="icon ion-md-remove"/>
                         </a>
                         <div className="answer">
                             <p>
-                            Answer 4.
+                                The duck serves as a beacon of hope. More specifically, a radio emitting FM waveforms
+                                of hope.
                             </p>
                         </div>
                     </div>
