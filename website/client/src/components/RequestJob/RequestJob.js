@@ -1,7 +1,7 @@
 import React from 'react';
 import './RequestJob.css';
-import '../../components/GoogleApiWrapper'
-import GoogleApiWrapper from "../GoogleApiWrapper";
+import MapContainer from "../MapContainer/MapContainer";
+import axios from 'axios';
 
 class RequestJob extends React.Component {
     constructor(props) {
@@ -10,8 +10,24 @@ class RequestJob extends React.Component {
             depth: 0.0,
             capacity: 0,
             latitude: 0.0,
-            longitude: 0.0
+            longitude: 0.0,
+            googleKey: '',
+            keyIsLoading: true
         };
+    }
+
+    componentDidMount() {
+        axios.get('/getKey')
+            .then((res) => {
+                const key = res.data;
+                this.setState({
+                    googleKey: key
+                }, () => {
+                    this.setState({
+                        keyIsLoading: false
+                    })
+                })
+            })
     }
 
     handleChange = (e) => {
@@ -76,7 +92,13 @@ class RequestJob extends React.Component {
                       </div>
                   </div>
                   <div className="flex-column-60 col-about-right">
-                      <GoogleApiWrapper/>
+                      {!this.state.keyIsLoading && this.state.googleKey.length > 1 ?
+                          <MapContainer
+                              googleKey={this.state.googleKey}
+                          />
+                          :
+                          null
+                      }
                   </div>
               </div>
           </div>
