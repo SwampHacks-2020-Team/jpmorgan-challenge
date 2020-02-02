@@ -3,7 +3,51 @@ var mongoose = require('mongoose'),
     Rescuer = require('../models/rescuers.server.model.js'),
     Rescuee = require('../models/rescuees.server.model.js'),
     http = require('http'),
-    fs = require('fs');
+    fs = require('fs'),
+    parseGpx = require('parse-gpx');
+
+function link(rescuer_id, rescuee_id) {
+  // Link the rescuee and the rescuer
+  Rescuer.findOneAndUpdate({_id: rescuer_id}, {$push: {"assigned_rescuees": rescuee_id}});
+  Rescuee.findOneAndUpdate({_id: rescuee_id}, {"status": {"assigned": true, "assigned_to": rescuer_id}});
+}
+
+function unlink(rescuer_id, rescuee_id) {
+  // Unlink the rescuee from the rescuer without marking them as rescued
+  Rescuer.findOneAndUpdate({_id: rescuer_id}, {$pull: {"assigned_rescuees": rescuee_id}});
+  Rescuee.findOneAndUpdate({_id: rescuee_id}, {"status": {"assigned": false, "assigned_to": null}});
+}
+
+function unlink_finish(rescuer_id, rescuee_id) {
+  // Mark the rescuee as rescued and unlink them from the rescuer
+  Rescuer.findOneAndUpdate({_id: rescuer_id}, {$pull: {"assigned_rescuees": rescuee_id}});
+  Rescuee.findOneAndUpdate({_id: rescuee_id}, {"status": {"picked_up": true, "assigned_to": null}});
+}
+
+function findOptimalOrder(rescueelist) {
+  return rescueelist;
+  // returns the list of rescuees, but in optimal order
+}
+
+function requestGPX(rescuer, pts, wateralt, callback) {
+  // This is the sauce. Here we call BRouter and get a topographical aware map
+  //  and save a GPX result file
+  // callback will have a parameter with a string of the path of the GPX file
+
+  var call = "http://nas.jaxnb.net:17777/brouter?lonlats=";
+  for(var pt in pts) {
+    call += pt.longitude + "," + pt.latitude + "|";
+  }
+  call = call.substring(0, call.length-1);
+  call += "&nogos=&profile=shortest&alternativeidx=0&format=gpx&maxalt=";
+  call += (wateralt - rescuer.boat_depth);
+
+  const file = fs.createWriteStream(rescuer._id + ".gpx");
+  const request = http.get(call, function(response) {
+    response.pipe(file);
+    callback(rescuer._id + ".gpx");
+  });
+}
 
 exports.rescueeRequest = (req, res) => {
     var requestobj =   {   name      : req.body.name,
@@ -47,7 +91,7 @@ exports.rescuerNewMission = (req, res) => {
     if(err) {
       newUser = true;
       rescuer = new Rescuer(requestobj);
-      // TODO GET ID FOR THIS
+      rescuer._id = mongoose.Types.ObjectId();
     } else {
       rescuer.name          = requestobj.name;
       rescuer.boat          = requestobj.boat;
@@ -71,18 +115,25 @@ exports.rescuerNewMission = (req, res) => {
             .exec((err2, rescuee) => {
 
               if(err2) {
-
-                // No people queued
+                res.status(500).send('No people are queued').end();
+                return;
               }
 
               link(rescuer._id, rescuee._id);
               rescueelist.push(rescuee);
 
     }).then(function(doc) {
-      
+      if(rescueelist.size() == 0) return; // Should have already sent the result end
+
       var optrescueeorder = findOptimalOrder(rescueelist);
 
-      requestGPX((gpxURI) => {
+      var pts = [];
+      pts.push({"longitude": rescuer.longitude, "latitude": rescuer.latitude});
+      for(var rescuee in optrescueeorder) {
+        pts.push({"longitude": rescuee.longitude, "latitude": rescuee.latitude});
+      }
+
+      requestGPX(rescuer, pts, 31, (gpxURI) => { // TODO Need to insert WATERALT with the altitude at which the water is
         rescuer.current_gpx_uri = gpxURI;
         rescuer.save(err3 => {
           if(err3) {
@@ -103,7 +154,11 @@ exports.getGPX = (req, res) => {
       console.log(err);
       res.status(500).send(err);
     } else {
-      res.sendFile(path.join(rescuer.current_gpx_uri));
+      //res.sendFile(path.join(rescuer.current_gpx_uri));
+      parseGpx(rescuer.current_gpx_uri).then(track => {
+          //console.log(track[0].latitude); // 43.512926660478115
+          res.json({"track":track});
+      });
     }
   });
 };
