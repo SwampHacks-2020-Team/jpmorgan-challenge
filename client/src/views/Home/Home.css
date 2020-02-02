@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+}
+
+.App {
+    text-align: center;
+    background-color: white;
+    background-image: url("../../assets/wallpaper-homepage.jpeg");
+    min-height: 100vh;
+}
+
+.App-logo {
+    height: 30vmin;
+}
+
+.landing-page {
+    background-color: #6FC9E7;
+    min-height: 100vh;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.page-name {
+    position: relative;
+    width: 100%;
+    color: rgba(255, 255, 255, 1);
+    font-size: 5em;
+    padding: 5vh 5vw 0vh;
+    font-family: 'Anton', sans-serif;
+    text-align: left;
+}
+
+.page-name-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Anton', sans-serif;
+    font-size: 2em;
+    text-align: left;
+    padding: 0vh 5vw 10vh;
+}
+
+.city-callout {
+    padding: 10vh 10vw;
+    color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 2em;
+    text-align: right;
+}
+
+.inspirational-quote {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Cambay', sans-serif;
+    font-size: 1.4em;
+    padding: 0 10vw 0 5vw;
+    text-align: left;
+}
+
+.App-link {
+    color: #09d3ac;
+}
+
+.col-home-left {
+    display: flex;
+}
+
+.col-home-right {
+    display: flex;
+}
+
+@media only screen and (max-width: 1280px) {
+    .footer {
+        visibility: hidden;
+    }
+}
