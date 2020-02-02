@@ -7,7 +7,6 @@ var rescuerSchema = new Schema({
   boat: String,
   boat_capacity: Number,
   boat_depth: Number,
-  numPeople: Number,
   assigned_rescuees: [mongoose.ObjectId],
   current_gpx_uri: String
 }, {versionKey:false});

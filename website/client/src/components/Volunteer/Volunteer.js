@@ -11,8 +11,11 @@ class Volunteer extends React.Component {
             capacity: 0,
             latitude: 0.0,
             longitude: 0.0,
+            phoneNumber: '',
             googleKey: '',
-            keyIsLoading: true
+            keyIsLoading: true,
+            gpxData: [],
+            dataIsLoading: true
         };
     }
 
@@ -27,7 +30,7 @@ class Volunteer extends React.Component {
                         keyIsLoading: false
                     })
                 })
-            })
+            });
     }
 
     handleChange = (e) => {
@@ -40,7 +43,17 @@ class Volunteer extends React.Component {
     };
 
     onSubmit = () => {
-        // TODO
+        axios.get(`/api/getGPX?phone=${this.state.phoneNumber}`)
+            .then((res) => {
+                console.log(res.data);
+                this.setState({
+                    gpxData: res.data.tracks[0].segments[0]
+                }, () => {
+                    this.setState({
+                        dataIsLoading: false
+                    })
+                })
+            })
     };
 
     render() {
@@ -52,6 +65,15 @@ class Volunteer extends React.Component {
                         Volunteer
                       </div>
                       <div className="volunteer-form">
+                          <div className="variable">
+                              <label>Phone Number</label>
+                              <input
+                                  placeholder="0123456789"
+                                  type="text"
+                                  name="phoneNumber"
+                                  onChange={this.handleChange}
+                              />
+                          </div>
                           <div className="variable">
                               <label>Draft (meters)</label>
 
@@ -89,15 +111,20 @@ class Volunteer extends React.Component {
                                   onChange={this.handleChange}
                               />
                           </div>
-                          <div className="request" onClick={() => this.onSubmit}>
+                          <div className="request" onClick={() => this.onSubmit()}>
                               Request Job
                           </div>
                       </div>
                   </div>
                   <div className="flex-column-60 col-volunteer-right">
                       {
-                        !this.state.keyIsLoading && this.state.googleKey.length > 1 ?
-                        <MapContainer googleKey={this.state.googleKey} id="google-map"/> : null
+                        !this.state.keyIsLoading && !this.state.dataIsLoading ?
+                        <MapContainer
+                            googleKey={this.state.googleKey}
+                            geoData={this.state.gpxData}
+                            id="google-map"
+                        />
+                        : null
                       }
                   </div>
               </div>
