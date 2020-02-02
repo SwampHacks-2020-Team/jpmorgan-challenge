@@ -1,5 +1,7 @@
 import React from 'react';
 import './RequestJob.css';
+import '../../components/GoogleApiWrapper'
+import GoogleApiWrapper from "../GoogleApiWrapper";
 
 class RequestJob extends React.Component {
     constructor(props) {
@@ -74,7 +76,7 @@ class RequestJob extends React.Component {
                       </div>
                   </div>
                   <div className="flex-column-60 col-about-right">
-                      // TODO: put google maps ehre
+                      <GoogleApiWrapper/>
                   </div>
               </div>
           </div>
