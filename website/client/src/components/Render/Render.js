@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader';
 import RubberDuck from './../../assets/cad-rubber-duck.stl';
+import Draggable from './../Draggable/Draggable'
 import './Render.css'
 
 class Render extends Component {
@@ -125,6 +126,15 @@ class Render extends Component {
                             </a>.
                         </p>
                     </div>
+                    <Draggable x={20} y={550}>
+                        {/*Note: The 'sticky' class CSS is located in '~/assets/Theme.css'*/}
+                        <div className="sticky">
+                            <div className="sticky-text"  /*contentEditable="true" spellCheck="false"*/>
+                                Coming Soon! <br/>
+                                [Move Me]
+                            </div>
+                        </div>
+                    </Draggable>
                 </div>
             </div>
         );
