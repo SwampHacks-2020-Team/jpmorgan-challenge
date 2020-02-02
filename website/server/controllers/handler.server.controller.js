@@ -161,7 +161,15 @@ exports.rescuerNewMission = (req, res) => {
             console.log(err3);
             res.status(500).send(err3);
           } else {
-            res.status(200).end();
+            gpxParse.parseGpxFromFile(rescuer.current_gpx_uri, function(error, data) {
+              if(error) {
+                console.log(error);
+                res.status(500).send(error);
+              } else {
+                console.log(data);
+                res.json(data);
+              }
+            });
           }
         });
       });
