@@ -3,9 +3,15 @@ const path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    getHelpRouter = require('../routes/getHelp.server.routes');
+    handlerRouter = require('../routes/handler.server.routes');
 
 module.exports.init = () => {
+
+    mongoose.connect(process.env.DB_URI || require('../config/config').db.uri, {
+        useNewUrlParser: true
+    });
+    mongoose.set('useCreateIndex', true);
+    mongoose.set('useFindAndModify', false);
 
     // initialize app
     const app = express();
@@ -18,7 +24,7 @@ module.exports.init = () => {
     app.use(bodyParser.json());
 
     // add a router
-    app.use('/api/', getHelpRouter);
+    app.use('/api/', handlerRouter);
 
     if (process.env.NODE_ENV === 'production') {
         // Serve any static files

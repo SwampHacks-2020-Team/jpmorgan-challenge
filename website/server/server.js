@@ -1,14 +1,13 @@
 const express = require('./config/express.js');
-
-let keyImport = require('./config/config.js');
  
 // Use env port or default
 const port = process.env.PORT || 5000;
+const googlekey = process.env.MAPS_KEY || require('./config/config.js').google.key;
 
 const app = express.init();
 
 app.get("/getKey", (req, res) => {
-    return res.json(keyImport.google.key)
+    return res.json(googlekey);
 });
 
 app.listen(port, () => console.log(`Server now running on port ${port}!`));
