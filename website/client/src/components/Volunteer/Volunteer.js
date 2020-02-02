@@ -1,7 +1,6 @@
 import React from 'react';
 import './Volunteer.css';
 import MapContainer from "../MapContainer/MapContainer";
-import ReactTooltip from 'react-tooltip';
 import axios from 'axios';
 
 class Volunteer extends React.Component {
