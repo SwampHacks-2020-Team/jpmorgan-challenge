@@ -10,7 +10,8 @@
     "dev": "concurrently \"nodemon server/server.js\" \"cd client && npm run start\"",
     "build": "cd client && npm build",
     "start": "concurrently \"cd server && nodemon server.js\" \"cd client && npm start\"",
-    "run-app": "concurrently \"cd server && nodemon server.js\" \"cd client && npm start\""
+    "run-app": "concurrently \"cd server && nodemon server.js\" \"cd client && npm start\"",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "dependencies": {
     "concurrently": "^4.1.0",
