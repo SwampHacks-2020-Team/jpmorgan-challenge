@@ -15,7 +15,7 @@ class AboutUs extends React.Component {
                       <div className="description">
                           <p>
                               Here, we have one objective: to help any person, in any place, at any time, affected by
-                              any flood-related disaster, survive. Our missions is, at the very least, to ensure that
+                              any flood-related disaster, survive. Our mission is, at the very least, to ensure that
                               all those stranded by flooding can survive and continue living their lives to the fullest.
                           </p>
                           <p>
@@ -38,4 +38,4 @@ class AboutUs extends React.Component {
     }
 }
 
-export default AboutUs
+export default AboutUs;
