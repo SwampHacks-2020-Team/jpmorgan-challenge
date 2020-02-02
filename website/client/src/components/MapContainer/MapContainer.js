@@ -4,7 +4,7 @@ import './MapContainer.css'
 
 const MapContainer = (props) => {
     return (
-        <div style={{ height: '70%', width: '90%'}}>
+        <div className="google-map">
             <GoogleMapReact
                 bootstrapURLKeys={{ key: props.googleKey }}
                 defaultZoom={16}

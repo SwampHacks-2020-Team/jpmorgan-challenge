@@ -24,3 +24,8 @@
     transform: translate(-50%, -50%);
     z-index: 1;
 }
+
+.google-map {
+    height: 100%;
+    width: 100%;
+}
