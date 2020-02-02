@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import EmergencyForm from './../../components/EmergencyForm/EmergencyForm';
-import Hurricane from '../../assets/hurricane.svg';
 import './Home.css';
 
 const Home = () => {
