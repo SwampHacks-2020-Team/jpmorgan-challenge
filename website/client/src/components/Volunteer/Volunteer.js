@@ -13,7 +13,7 @@ class Volunteer extends React.Component {
             latitude: 0.0,
             longitude: 0.0,
             googleKey: '',
-            keyIsLoading: true
+            keyIsLoading: true,
         };
     }
 
@@ -28,6 +28,13 @@ class Volunteer extends React.Component {
                         keyIsLoading: false
                     })
                 })
+            });
+
+        axios.get('/getGPX?phone=0000000000')
+            .then((res) => {
+                const data = res.data;
+                console.log(data);
+                const track = res.data.track; // array
             })
     }
 
