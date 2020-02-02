@@ -7,6 +7,7 @@ const googlekey = process.env.MAPS_KEY || require('./config/config.js').google.k
 const app = express.init();
 
 app.get("/getKey", (req, res) => {
+    console.log(googlekey);
     return res.json(googlekey);
 });
 
