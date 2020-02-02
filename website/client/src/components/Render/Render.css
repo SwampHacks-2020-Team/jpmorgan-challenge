@@ -1,16 +1,28 @@
 .product-wrapper {
-	background-color: #cccccc;
-	min-height: 100vh;
+		background-color: #cccccc;
+		min-height: 100vh;
 }
 
 .render-title {
-	position: relative;
-	width: 100%;
-	color: rgba(0, 0, 0, 0.8);
-	font-size: 5em;
-	padding: 5vh 5vw 5vh;
-	font-family: 'Anton', sans-serif;
-	text-align: left;
+		position: relative;
+		width: 100%;
+		color: rgba(0, 0, 0, 0.8);
+		font-size: 5em;
+		padding: 5vh 5vw 5vh;
+		font-family: 'Anton', sans-serif;
+		text-align: left;
+}
+
+.product-title {
+		color: rgba(0, 0, 0, 0.8);
+		font-size: 4em;
+		font-family: 'Anton', sans-serif;
+		text-align: left;
+		padding: 0.5em 0;
+}
+
+.product-column-right {
+		padding-right: 5vw;
 }
 
 #threejs-product-container {

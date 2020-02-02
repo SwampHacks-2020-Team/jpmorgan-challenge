@@ -8,8 +8,8 @@ import './Render.css'
 class Render extends Component {
     componentDidMount() {
         var mesh, renderer, scene, camera, controls, bb, rect;
-        var rotate = 'Z';
-        var vector = new THREE.Vector3(-1, 0, 0);
+        var rotate = 'Y';
+        var vector = new THREE.Vector3(0, -1, 0);
         var pause = false;
 
         function load() {
@@ -98,7 +98,33 @@ class Render extends Component {
     render() {
         return (
             <div className="product-wrapper">
-                <div id="threejs-product-container">
+                <div className="row">
+                    <div className="flex-column-55">
+                        <div id="threejs-product-container"></div>
+                    </div>
+                    <div className="flex-column-45 product-column-right">
+                        <div className="product-title">Rubber Ducks.</div>
+                        <p>
+                            We understand that natural disasters are unpredictable and can catch
+                            even the best of us off-guard. In partnership with some of the leading
+                            experts in disaster relief, Real-Time Rescume is preparing to manufacture
+                            and distribute a large number of rubber ducks to coastal cities.
+                        </p>
+                        <p>
+                            These rubber ducks are equipped with a special FM transeiver that will
+                            automatically alert the local authorities and rescue services of your
+                            location when squeezed. The enclosure is water-proof and lightweight,
+                            allowing it to float as the water rises in an emergency situation.
+                        </p>
+                        <p>
+                            The rubber duck comes at no cost to you. It is entirely funded by
+                            disaster relief agencies and donors. To find out more, please contact us
+                            at &nbsp;
+                            <a href="mailto:rtrescue.swamphacks@gmail.com">
+                                rtrescue.swamphacks@gmail.com
+                            </a>.
+                        </p>
+                    </div>
                 </div>
             </div>
         );
