@@ -2,6 +2,7 @@
 var mongoose = require('mongoose'), 
     Rescuer = require('../models/rescuers.server.model.js'),
     Rescuee = require('../models/rescuees.server.model.js'),
+    MongoData = require('../models/data.server.model.js'),
     http = require('http'),
     fs = require('fs'),
     gpxParse = require("gpx-parse");
@@ -152,25 +153,34 @@ exports.rescuerNewMission = (req, res) => {
       }
       pts.push({"longitude": req.body.longitude, "latitude": req.body.latitude});
 
-      console.log('before gpx');
-      requestGPX(rescuer, pts, 31, (gpxURI) => { // TODO Need to insert WATERALT with the altitude at which the water is
-        console.log('gpx callback');
-        rescuer.current_gpx_uri = gpxURI;
-        rescuer.save(err3 => {
-          if(err3) {
-            console.log(err3);
-            res.status(500).send(err3);
-          } else {
-            gpxParse.parseGpxFromFile(rescuer.current_gpx_uri, function(error, data) {
-              if(error) {
-                console.log(error);
-                res.status(500).send(error);
-              } else {
-                console.log(data);
-                res.json(data);
-              }
-            });
-          }
+      MongoData.findOne({"alt": {$exists: true}}).exec((erra, altobj) => {
+        var walt;
+        if(erra) {
+          walt = 31.0;
+          console.log(erra);
+        } else {
+          walt = altobj.alt;
+        }
+        console.log('before gpx');
+        requestGPX(rescuer, pts, walt, (gpxURI) => { // TODO Need to insert WATERALT with the altitude at which the water is
+          console.log('gpx callback');
+          rescuer.current_gpx_uri = gpxURI;
+          rescuer.save(err3 => {
+            if(err3) {
+              console.log(err3);
+              res.status(500).send(err3);
+            } else {
+              gpxParse.parseGpxFromFile(rescuer.current_gpx_uri, function(error, data) {
+                if(error) {
+                  console.log(error);
+                  res.status(500).send(error);
+                } else {
+                  console.log(data);
+                  res.json(data);
+                }
+              });
+            }
+          });
         });
       });
     });
