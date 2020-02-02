@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import * as THREE from 'three';
-import Dropzone from 'react-dropzone'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {STLLoader} from 'three/examples/jsm/loaders/STLLoader';
 import RubberDuck from './../../assets/cad-rubber-duck.stl';
@@ -53,7 +52,7 @@ class Render extends Component {
             var boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
             bb = new THREE.Box3().setFromObject(boxMesh);
             var height = bb.getSize().y;
-            var dist = height / 2 / Math.tan(Math.PI * 1 / 360);
+            var dist = height / 2 / Math.tan(Math.PI / 360);
             camera.position.set(dist + 25, dist + 25, dist + 25);
             camera.lookAt(boxMesh.position);
 
