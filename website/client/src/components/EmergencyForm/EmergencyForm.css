@@ -62,7 +62,7 @@ input.error {
     display: relative;
 }
 
-.name, 
+.name,
 .longitude {
     margin-right: 1%;
 }
@@ -73,7 +73,7 @@ input.error {
 }
 
 .name,
-.party-size, 
+.party-size,
 .phone,
 .message {
     display: flex;
@@ -82,7 +82,7 @@ input.error {
     text-align: left;
 }
 
-.longitude, 
+.longitude,
 .latitude {
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@ input.error {
 
 .name,
 .party-size,
-.longitude, 
+.longitude,
 .latitude {
     width: 49%;
 }
@@ -162,7 +162,7 @@ input.error {
   color: #666666;
 }
 
-.get-coordinates small, 
+.get-coordinates small,
 .get-help small {
     color: #999;
     font-weight: lighter;
