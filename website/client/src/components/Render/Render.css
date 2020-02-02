@@ -1,0 +1,23 @@
+.product-wrapper {
+	background-color: #cccccc;
+	min-height: 100vh;
+}
+
+.render-title {
+	position: relative;
+	width: 100%;
+	color: rgba(0, 0, 0, 0.8);
+	font-size: 5em;
+	padding: 5vh 5vw 5vh;
+	font-family: 'Anton', sans-serif;
+	text-align: left;
+}
+
+#threejs-product-container {
+		margin-right: 70px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 700px;
+		width: 700px;
+}
