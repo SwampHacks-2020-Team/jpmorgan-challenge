@@ -45,6 +45,7 @@ class Volunteer extends React.Component {
     };
 
     componentDidMount() {
+      /*
         axios.get('/getKey')
             .then((res) => {
                 const key = res.data;
@@ -55,7 +56,7 @@ class Volunteer extends React.Component {
                         keyIsLoading: false
                     })
                 })
-            });
+            });*/
     }
 
     handleChange = (e) => {
@@ -231,9 +232,9 @@ class Volunteer extends React.Component {
                   </div>
                   <div className="flex-column-60 col-volunteer-right">
                       {
-                        !this.state.keyIsLoading && !this.state.dataIsLoading ?
+                        !false && !this.state.dataIsLoading ?
                         <MapContainer
-                            googleKey={this.state.googleKey}
+                            googleKey={'AIzaSyAcCv2aPhvkiRdWFtFptCuobFWxza1G4Ww'}
                             geoData={this.state.gpxData}
                             id="google-map"
                         />
