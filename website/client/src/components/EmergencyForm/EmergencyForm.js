@@ -58,9 +58,9 @@ class App extends Component {
             console.log('--Submitting--');
             GetHelp.getHelp(this.state.name,
                             this.state.partySize,
-                            this.state.phone, 
-                            this.longitude,
-                            this.latitude,
+                            this.state.phone.replace(/\D/g, ""),
+                            this.state.longitude,
+                            this.state.latitude,
                             this.state.message);
             this.setState({success: true});
         }
@@ -180,7 +180,7 @@ class App extends Component {
 
                     <div className="get-coordinates">
                         <div className="coord-button" onClick={() => this.getCoordinates()}>
-                            Get My Coordinates!
+                            Get My Coordinates
                         </div>
                     </div>
 

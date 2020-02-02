@@ -1,6 +1,5 @@
 .volunteer-page {
 	background-image: url("../../assets/wallpaper-volunteer.jpeg");
-	min-height: 100vh;
 }
 
 .volunteer-title {
@@ -46,6 +45,35 @@
 
 .volunteer-form {
 		padding: 0 5vw;
+}
+
+
+.get-coordinates {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+		text-align: center;
+    padding-bottom: 15px;
+}
+
+.coord-button {
+    background-color: rgba(0, 0, 0, 0);
+    color: #253A4B;
+    border: 2px solid #253A4B;
+    width: 100%;
+    margin-top: 1em;
+    padding: 8px 0px;
+    font-size: 1em;
+    font-weight: lighter;
+    letter-spacing: 1px;
+    margin-bottom: 0.25em;
+}
+
+.coord-button:hover {
+    color: #aaa;
+    border: 2px solid #888;
+    cursor: pointer;
 }
 
 #google-map {
