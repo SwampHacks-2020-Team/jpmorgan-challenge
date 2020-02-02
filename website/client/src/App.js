@@ -4,6 +4,7 @@ import Home from "./views/Home/Home";
 import RequestJob from "./components/RequestJob/RequestJob"
 import AboutUs from "./components/AboutUs/AboutUs"
 import FAQ from "./components/FAQ/FAQ"
+import RubberDucky from "./components/Render/Render"
 import NotFound from "./views/NotFound/NotFound";
 import NavBar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -22,6 +23,7 @@ const App = () => {
         <Route exact path="/RequestJob" component={RequestJob}></Route>
         <Route exact path="/AboutUs" component={AboutUs}></Route>
         <Route exact path="/FAQ" component={FAQ}></Route>
+        <Route exact path="/Products/RubberDucky" component={RubberDucky}></Route>
         <Route component={NotFound}/>
       </Switch>
       <Footer/>
